@@ -1,0 +1,4 @@
+outs:
+- md5: fdb0a2367ebd394666e0b7522a6733aa
+  size: 205056
+  path: census_clf.joblib

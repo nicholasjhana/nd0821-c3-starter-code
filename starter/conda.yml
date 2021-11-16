@@ -1,4 +1,4 @@
-name: mlops-api
+name: mlopsapi
 channels:
     - conda-forge
     - defaults
@@ -9,10 +9,12 @@ dependencies:
     - scikit-learn
     - pytest
     - requests
-    - fastapi==0.63.0
+    - fastapi
     - uvicorn
     - gunicorn
-    - dvc
+    - pip
     - jupyter
     - jupyterlab
     - flake8
+    - pip:
+          - dvc
