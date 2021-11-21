@@ -21,7 +21,7 @@ def train_model(X_train, y_train):
         Trained machine learning model.
     """
 
-    reg = RandomForestClassifier(n_estimators=18, max_depth=7, random_state=99)
+    reg = RandomForestClassifier(n_estimators=200, max_depth=27, random_state=99)
     reg.fit(X_train, y_train)
 
     return reg
@@ -54,7 +54,7 @@ def inference(model, X):
 
     Inputs
     ------
-    model : ???
+    model : sklearn.ensemble.RandomForestClassifier
         Trained machine learning model.
     X : np.array
         Data used for prediction.
