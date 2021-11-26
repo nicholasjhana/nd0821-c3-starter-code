@@ -1,6 +1,11 @@
 import numpy as np
+import pandas as pd
 from sklearn.preprocessing import LabelBinarizer, OneHotEncoder
 
+def load_data(path=None):
+    if path is None:
+        path = './data/census_cleaned.csv'
+    return pd.read_csv(path)
 
 def process_data(
     X, categorical_features=[], label=None, training=True, encoder=None, lb=None

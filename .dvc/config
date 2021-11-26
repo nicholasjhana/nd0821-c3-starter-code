@@ -1,0 +1,7 @@
+[core]
+    remote = remotestores3
+['remote "localremote"']
+    url = ../../../local-data-repo
+['remote "remotestores3"']
+    url = s3://mlops-dvc-s3-datastore
+    profile = udacity
