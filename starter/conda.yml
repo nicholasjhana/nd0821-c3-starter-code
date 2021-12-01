@@ -18,3 +18,5 @@ dependencies:
     - flake8
     - pip:
           - dvc
+          - boto3
+          - s3fs
