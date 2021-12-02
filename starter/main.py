@@ -65,8 +65,8 @@ async def create_item(sample_id: int, sample: Sample):
         "native-country"
     ]
 
-    model = joblib.load("./model/census_clf.joblib")
-    encoder = joblib.load("./model/census_encoder.joblib")
+    model = joblib.load("./starter/model/census_clf.joblib")
+    encoder = joblib.load("./starter/model/census_encoder.joblib")
 
     sample_dict = jsonable_encoder(sample)
     data = DataFrame(sample_dict, index=[0])

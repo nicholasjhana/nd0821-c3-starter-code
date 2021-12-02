@@ -4,7 +4,7 @@ from sklearn.preprocessing import LabelBinarizer, OneHotEncoder
 
 def load_data(path=None):
     if path is None:
-        path = './data/census_cleaned.csv'
+        path = './starter/data/census_cleaned.csv'
     return pd.read_csv(path)
 
 def process_data(

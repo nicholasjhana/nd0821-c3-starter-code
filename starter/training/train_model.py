@@ -9,6 +9,8 @@ from ml.model import train_model, compute_model_metrics, inference, save_model_a
 from ml.slices import slice_performance
 # Add code to load in the data.
 data = load_data()
+print("data shape")
+print(data.shape)
 # Optional enhancement, use K-fold cross validation instead of a train-test split.
 train, test = train_test_split(data, test_size=0.20)
 

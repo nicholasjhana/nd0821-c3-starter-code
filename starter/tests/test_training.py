@@ -8,7 +8,7 @@ from training.ml import data, model
 
 @pytest.fixture(scope="session")
 def data_fixture(request):
-    df = pd.read_csv("./data/census_cleaned.csv")
+    df = pd.read_csv("./starter/data/census_cleaned.csv")
 
     cat_features = [
         "workclass",
@@ -27,8 +27,7 @@ def data_fixture(request):
                                                         training=True
                                                         )
 
-    clf = joblib.load("./model/census_clf.joblib")
-
+    clf = joblib.load("./starter/model/census_clf.joblib")
     return (sample_X, sample_y, encoder, lb), clf
 
 
@@ -65,7 +64,7 @@ def test_save_model_artifact():
 
     reg = RandomForestClassifier()
     name = "saving_artifact_test.joblib"
-    path = "./tests"
+    path = "./starter/tests"
     model.save_model_artifact(reg, name, path=path)
     assert os.path.exists(path), f"Artifact not saved at {path}"
 
