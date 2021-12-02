@@ -55,6 +55,6 @@ jobs:
           aws-region: us-east-1
       
       - name: Setup test environment
-        run: $CONDA/bin/dvc pull
+        run: $CONDA/bin/dvc pull --remote remotestores3
       - name: Test with pytest
         run: $CONDA/bin/pytest
