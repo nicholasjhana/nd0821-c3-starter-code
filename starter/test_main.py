@@ -17,7 +17,6 @@ def test_predict_negative_label():
     Negative label test. Expected result for sample class <=50K is label 0.
     """
     sample_id = 0
-    url = f"http://127.0.0.1:8000/predict/{sample_id}"
     sample = {"age": 39,
               "workclass": "State-gov",
               "fnlgt": 77516,
@@ -33,16 +32,16 @@ def test_predict_negative_label():
               "hours-per-week": 40,
               "native-country": "United-States"}
 
-    r = requests.post(url, data=json.dumps(sample))
+    r = client.post(f"/predict/{sample_id}", json=sample)
     assert r.status_code == 200
     assert ast.literal_eval(r.json()["pred"])[0] == 0 #expect negative case, salary <=50K
+
 
 def test_predict_positive_label():
     """
     Positive label test. Expected result for sample class >50K is label 1.
     """
     sample_id = 7
-    url = f"http://127.0.0.1:8000/predict/{sample_id}"
     sample = {"age": 52,
               "workclass": "Self-emp-not-inc",
               "fnlgt": 209642,
@@ -58,6 +57,6 @@ def test_predict_positive_label():
               "hours-per-week": 45,
               "native-country": "United-States"}
 
-    r = requests.post(url, data=json.dumps(sample))
+    r = client.post(f"/predict/{sample_id}", json=sample)
     assert r.status_code == 200
-    assert ast.literal_eval(r.json()["pred"])[0] == 1 #positive case 1 salary >50K
+    assert ast.literal_eval(r.json()["pred"])[0] == 1 #expect negative case, salary <=50K
