@@ -1,7 +1,9 @@
 [core]
-    remote = remotestores3
+    remote = s3remoteaction
 ['remote "localremote"']
     url = ../../../local-data-repo
 ['remote "remotestores3"']
     url = s3://mlops-dvc-s3-datastore
     profile = udacity
+['remote "s3remoteaction"']
+    url = s3://mlops-dvc-s3-datastore
