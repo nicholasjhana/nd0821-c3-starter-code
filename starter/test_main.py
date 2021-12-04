@@ -42,20 +42,20 @@ def test_predict_positive_label():
     Positive label test. Expected result for sample class >50K is label 1.
     """
     sample_id = 7
-    sample = {"age": 52,
-              "workclass": "Self-emp-not-inc",
-              "fnlgt": 209642,
-              "education": "HS-grad",
-              "education-num": 9,
-              "marital-status": "Married-civ-spouse",
-              "occupation": "Exec-managerial",
-              "relationship": "Husband",
-              "race": "White",
-              "sex": "Male",
-              "capital-gain": 0,
-              "capital-loss": 0,
-              "hours-per-week": 45,
-              "native-country": "United-States"}
+    sample = {'age': 31,
+              'workclass': 'Private',
+              'fnlgt': 45781,
+              'education': 'Masters',
+              'education-num': 14,
+              'marital-status': 'Never-married',
+              'occupation': 'Prof-specialty',
+              'relationship': 'Not-in-family',
+              'race': 'White',
+              'sex': 'Female',
+              'capital-gain': 14084,
+              'capital-loss': 0,
+              'hours-per-week': 50,
+              'native-country': 'United-States'}
 
     r = client.post(f"/predict/{sample_id}", json=sample)
     assert r.status_code == 200
