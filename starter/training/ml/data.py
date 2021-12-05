@@ -1,10 +1,11 @@
+import os
 import numpy as np
 import pandas as pd
 from sklearn.preprocessing import LabelBinarizer, OneHotEncoder
 
 def load_data(path=None):
     if path is None:
-        path = './starter/data/census_cleaned.csv'
+        path = os.path.join(os.getcwd(), 'starter/data/census_cleaned.csv')
     return pd.read_csv(path)
 
 def process_data(

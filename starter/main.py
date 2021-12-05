@@ -7,8 +7,8 @@ from pydantic import BaseModel
 import joblib
 from pandas import DataFrame
 
-from training.ml.model import inference
-from training.ml.data import process_data
+from starter.training.ml.model import inference
+from starter.training.ml.data import process_data
 
 app = FastAPI()
 

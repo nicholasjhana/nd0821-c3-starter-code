@@ -4,11 +4,13 @@ import joblib
 import pandas as pd
 import numpy as np
 from sklearn.ensemble import RandomForestClassifier
-from training.ml import data, model
+from starter.training.ml import data, model
 
 @pytest.fixture(scope="session")
 def data_fixture(request):
-    df = pd.read_csv("./starter/data/census_cleaned.csv")
+    cwd = os.getcwd()
+    df = pd.read_csv(os.path.join(cwd, "starter/data/census_cleaned.csv"))
+
 
     cat_features = [
         "workclass",
@@ -26,8 +28,7 @@ def data_fixture(request):
                                                         label="salary",
                                                         training=True
                                                         )
-
-    clf = joblib.load("./starter/model/census_clf.joblib")
+    clf = joblib.load(os.path.join(cwd,"starter/model/census_clf.joblib"))
     return (sample_X, sample_y, encoder, lb), clf
 
 
