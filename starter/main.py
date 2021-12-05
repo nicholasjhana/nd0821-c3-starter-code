@@ -84,8 +84,9 @@ async def create_item(sample_id: int, sample: Sample):
 
 if "DYNO" in os.environ and os.path.isdir(".dvc"):
     os.system("aws configure --profile 'udacity'")
-    os.system("dvc config core.no_scm true")
-    # os.system("dvc remote add -d remotestores3 ${{env.DVC_REMOTE_REPOSITORY}}")
+    os.system("dvc remote add remotestores3 ${{env.DVC_REMOTE_REPOSITORY}}")
+    os.system("dvc config core.no_scm true core.remote remotestores3")
+
     # if os.system("dvc pull") != 0:
     #     exit("dvc pull failed")
     dvc_output = subprocess.run(["dvc", "pull"], capture_output=True, text=True)
