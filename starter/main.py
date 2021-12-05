@@ -4,6 +4,7 @@ from fastapi import FastAPI, Query
 from fastapi.encoders import jsonable_encoder
 from pydantic import BaseModel
 
+import os
 import joblib
 from pandas import DataFrame
 
@@ -64,9 +65,9 @@ async def create_item(sample_id: int, sample: Sample):
         "sex",
         "native-country"
     ]
-
-    model = joblib.load("./starter/model/census_clf.joblib")
-    encoder = joblib.load("./starter/model/census_encoder.joblib")
+    cwd = os.getcwd()
+    model = joblib.load(os.path.join(cwd, "starter/model/census_clf.joblib"))
+    encoder = joblib.load(os.path.join(cwd, "starter/model/census_encoder.joblib"))
 
     sample_dict = jsonable_encoder(sample)
     data = DataFrame(sample_dict, index=[0])
@@ -78,3 +79,10 @@ async def create_item(sample_id: int, sample: Sample):
 
     pred = inference(model, X)
     return {"sample_id": sample_id, "sample": sample, "pred": str(pred)}
+
+
+if "DYNO" in os.environ and os.path.isdir(".dvc"):
+    os.system("dvc config core.no_scm true")
+    if os.system("dvc pull") != 0:
+        exit("dvc pull failed")
+    os.system("rm -r .dvc .apt/usr/lib/dvc")

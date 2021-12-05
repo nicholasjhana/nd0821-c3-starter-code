@@ -1,6 +1,7 @@
 """
 Script to test query the deployed heroku app
 """
+import json
 
 import requests
 
@@ -10,7 +11,8 @@ def request_live_app():
     Negative label test. Expected result for sample class <=50K is label 0.
     """
     sample_id = 0
-    base_url = f"https://ml-census-api.heroku.com/predict/{sample_id}"
+    base_url = f"https://ml-census-api.herokuapp.com/predict/{sample_id}"
+    # base_url = f"http://127.0.0.1:8000/predict/{sample_id}"
 
     sample = {"age": 39,
               "workclass": "State-gov",
@@ -27,7 +29,7 @@ def request_live_app():
               "hours-per-week": 40,
               "native-country": "United-States"}
 
-    r = requests.post(base_url, data=sample)
+    r = requests.post(base_url, data=json.dumps(sample))
 
     print(f"Status Code: {r.status_code}")
 
