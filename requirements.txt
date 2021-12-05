@@ -1,8 +1,6 @@
 # This file may be used to create an environment using:
 # $ conda create --name <env> --file <this file>
 # platform: linux-64
-_libgcc_mutex==0.1
-_openmp_mutex==4.5
 aiobotocore==1.4.2
 aiohttp==3.8.0
 aiohttp-retry==2.4.6
