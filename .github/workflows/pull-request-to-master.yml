@@ -34,7 +34,7 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Install Dependencies
         run: |
-          $CONDA/bin/conda env update --file ./starter/conda.yml --name base
+          $CONDA/bin/conda env update --file ./environment.yml --name base
           #python -m pip install --upgrade pip
           #pip install flake8 pytest
       - name: Lint with flake8
