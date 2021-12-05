@@ -82,18 +82,17 @@ async def create_item(sample_id: int, sample: Sample):
     return {"sample_id": sample_id, "sample": sample, "pred": str(pred)}
 
 
-if "DYNO" in os.environ and os.path.isdir(".dvc"):
+# if "DYNO" in os.environ and os.path.isdir(".dvc"):
     # os.system("aws configure --profile 'udacity'")
     # os.system("dvc remote add remotestores3-prod ${{env.DVC_REMOTE_REPOSITORY}}")
     # os.system("dvc config core.remote remotestores3-prod")
-    os.system("dvc config core.no_scm true")
 
-
-    # if os.system("dvc pull") != 0:
-    #     exit("dvc pull failed")
-    dvc_output = subprocess.run(["dvc", "pull", "--remote remotestores3-prod"], capture_output=True, text=True)
-    print(dvc_output.stdout)
-    print(dvc_output.stderr)
-    if dvc_output.returncode != 0:
-        print("dvc pull failed")
-    os.system("rm -r .dvc .apt/usr/lib/dvc")
+os.system("dvc config core.no_scm true")
+os.system("dvc config cache.type copy")
+dvc_output = subprocess.run(["dvc", "pull", "--remote remotestores3-prod"], capture_output=True, text=True)
+print(dvc_output.stdout)
+print(dvc_output.stderr)
+if dvc_output.returncode != 0:
+    exit("dvc pull failed")
+os.system("pwd")
+os.system("rm -r .dvc .apt/usr/lib/dvc")
