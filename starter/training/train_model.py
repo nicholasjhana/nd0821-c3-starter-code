@@ -49,14 +49,17 @@ print("X_test shape")
 print(X_test.shape)
 
 model = train_model(X_train, y_train)
-save_model_artifact(model, "census_clf.joblib", path="./model")
-save_model_artifact(encoder, "census_encoder.joblib", path="./model")
+save_model_artifact(model, "census_clf.joblib", path="starter/model")
+save_model_artifact(encoder, "census_encoder.joblib", path="starter/model")
+
+preds = inference(model, X_train)
+precision, recall, fbeta = compute_model_metrics(y_train, preds)
+print(f"TRAINING: Model results. Precision: {precision} Recall: {recall} FBeta: {fbeta}")
+
 
 preds = inference(model, X_test)
-print(preds)
 precision, recall, fbeta = compute_model_metrics(y_test, preds)
-
-print(f"Model results. Precision: {precision} Recall: {recall} FBeta: {fbeta}")
+print(f"TEST: Model results. Precision: {precision} Recall: {recall} FBeta: {fbeta}")
 
 print("-------------------")
 print("Computing slice performance")

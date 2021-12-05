@@ -1,4 +1,4 @@
 outs:
-- md5: cda18c6561b7ef57f19f48d00d3ff62b
-  size: 3898
+- md5: 8891a765a1a162fd9dda3f359e06df0a
+  size: 3873
   path: census_encoder.joblib

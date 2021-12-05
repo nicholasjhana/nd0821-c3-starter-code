@@ -27,11 +27,10 @@ Evaluation data comprised of the 20% of data not used in training, a total of 65
 Three metrics were used to evaluate the model's performance. Each metric is listed below with its performance. 
 
 | Metric| Training | Testing |
-|-------|----------|---------|
-| precision | 00 | 00 | 
-| recall | 00 | 00 |
-| fbeta | 00 | 00 |
-
+|-------|-----|---------|
+| precision | 0.97 | 0.77    | 
+| recall | 0.89 | 0.62    |
+| fbeta | 0.93 | 0.69    |
 
 ## Ethical Considerations
 

@@ -66,5 +66,6 @@ def inference(model, X):
     return model.predict(X)
 
 def save_model_artifact(artifcat, name, path=None):
-    full_path = os.path.join(path, name)
+    cwd = os.getcwd()
+    full_path = os.path.join(cwd, path, name)
     joblib.dump(artifcat, full_path)
