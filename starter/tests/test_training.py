@@ -71,9 +71,10 @@ def test_save_model_artifact():
 
 def test_compute_model_metrics(data_fixture):
 
-    data, clf = data_fixture
-    preds = clf.predict(data[0])
-    precision, recall, fbeta = model.compute_model_metrics(data[1], preds)
+    dfs, clf = data_fixture
+    assert dfs[0].shape[1] == 108
+    preds = clf.predict(dfs[0])
+    precision, recall, fbeta = model.compute_model_metrics(dfs[1], preds)
 
     assert isinstance(precision, float), f"Recall metric is wrong type {precision.type}"
     assert isinstance(recall, float), f"Recall metric is wrong type {recall.type}"
@@ -81,7 +82,7 @@ def test_compute_model_metrics(data_fixture):
 
 
 def test_inferecne(data_fixture):
-    data, clf = data_fixture
-    preds = clf.predict(data[0])
+    dfs, clf = data_fixture
+    preds = clf.predict(dfs[0])
     assert isinstance(preds, np.ndarray), f"Predictions are wrong type {type(preds)}"
-    assert preds.shape[0] == data[0].shape[0], "Number of input samples is different from number of predictions"
+    assert preds.shape[0] == dfs[0].shape[0], "Number of input samples is different from number of predictions"
