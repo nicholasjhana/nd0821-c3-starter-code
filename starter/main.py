@@ -85,7 +85,6 @@ async def create_item(sample_id: int, sample: Sample):
 if "DYNO" in os.environ and os.path.isdir(".dvc"):
     print("Running DVC")
     os.system("dvc config core.no_scm true")
-    os.system("dvc config core.hardlink_lock true")
     dvc_output = subprocess.run(["dvc", "pull"], capture_output=True, text=True)
     print("Return code:", dvc_output.returncode)
     print(dvc_output.stdout)
