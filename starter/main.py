@@ -94,6 +94,7 @@ if "DYNO" in os.environ and os.path.isdir(".dvc"):
         exit("Pull failed")
 
     os.system("rm -r .dvc .apt/usr/lib/dvc")
+    print("Pull success. Cleaning up.")
 
 
     # # os.system("aws configure --profile 'udacity'")
