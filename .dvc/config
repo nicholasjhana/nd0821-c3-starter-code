@@ -1,6 +1,8 @@
 [core]
     remote = remotestores3
     hardlink_lock = true
+[cache]
+    type = copy
 ['remote "localremote"']
     url = ../../../local-data-repo
 ['remote "remotestores3"']
