@@ -4,6 +4,3 @@
     url = ../../../local-data-repo
 ['remote "remotestores3"']
     url = s3://mlops-dvc-s3-datastore
-    profile = udacity
-['remote "remotestores3-prod"']
-    url = s3://mlops-dvc-s3-datastore
