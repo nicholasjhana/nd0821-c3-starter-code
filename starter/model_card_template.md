@@ -33,5 +33,8 @@ Three metrics were used to evaluate the model's performance. Each metric is list
 | fbeta | 0.93 | 0.69    |
 
 ## Ethical Considerations
+The slice_output.txt document contains summary of bias per model slice per feature.
+Reviewing this there appear several slices there bias is present. Fields in education, native-country, and occupation show this bais.
 
 ## Caveats and Recommendations
+Model has not been fine-tuned. Performance improvements and reduction in bias across features by applying hyperparameter tuning. Recommended to retrain and finetune before further use.
