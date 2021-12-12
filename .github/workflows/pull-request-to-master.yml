@@ -60,6 +60,6 @@ jobs:
           aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY --profile udacity
       
       - name: Setup test environment
-        run: $CONDA/bin/dvc pull --remote remotestores3
+        run: $CONDA/bin/dvc pull
       - name: Test with pytest
         run: $CONDA/bin/pytest
