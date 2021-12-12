@@ -32,11 +32,10 @@ jobs:
         run: echo Hello, world!
 
       # Runs a set of commands using the runners shell
-      - name: Install Dependencies
+      - name: Setup & install Conda Env
         run: |
           $CONDA/bin/conda env update --file ./environment.yml --name base
-          #python -m pip install --upgrade pip
-          #pip install flake8 pytest
+
       - name: Lint with flake8
         run: |
           # stop the build if there are Python syntax errors or undefined names
@@ -51,7 +50,7 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
           
-      - name: Add profile credentials to ~/.aws/credentials
+      - name: Setup AWS credentials
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
@@ -59,7 +58,8 @@ jobs:
           aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID --profile udacity
           aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY --profile udacity
       
-      - name: Setup test environment
+      - name: DVC Pull
         run: $CONDA/bin/dvc pull
-      - name: Test with pytest
+        
+      - name: Run pytest
         run: $CONDA/bin/pytest
